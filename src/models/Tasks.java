@@ -7,9 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+
 @Entity
+@NamedQueries({  //データ取得、JPQLという特殊な」SQL文
+    @NamedQuery(
+        name = "getAllTasks", //@NamedQuery アノテーションを使い、SELECT m FROM Message AS m ORDER BY m.id DESC というSELECT文に getAllMessages という名前をつけたのが上記の記述の内容です。
+        query = "SELECT m FROM Tasks AS m ORDER BY m.id DESC" //SELECT m は通常のSQLでいうところの SELECT * と同じ
+    )
+})
 @Table(name = "tasks")
 public class Tasks {
     @Id
