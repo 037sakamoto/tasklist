@@ -17,7 +17,11 @@ import javax.persistence.Table;
     @NamedQuery(
         name = "getAllTasks", //@NamedQuery アノテーションを使い、SELECT m FROM Message AS m ORDER BY m.id DESC というSELECT文に getAllMessages という名前をつけたのが上記の記述の内容です。
         query = "SELECT m FROM Tasks AS m ORDER BY m.id DESC" //SELECT m は通常のSQLでいうところの SELECT * と同じ
-    )
+    ),
+    @NamedQuery(
+            name = "getTasksCount",
+            query = "SELECT COUNT(m) FROM Tasks AS m"
+            )
 })
 @Table(name = "tasks")
 public class Tasks {
